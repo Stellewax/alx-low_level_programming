@@ -1,29 +1,31 @@
 #include "main.h"
+#include <string.h>
+
 /**
- * _strstr - Entry point
- * @haystack: input
- * @needle: input
- * Return: Always 0 (Success)
+ * _strstr - Find first occurence of given string in another string
+ * @haystack: String to search through
+ * @needle: String to search for
+ *
+ * Return: Pointer to beginning of located string
  */
+
 char *_strstr(char *haystack, char *needle)
 {
-	for (; *haystack != '\0'; haystack++)
+	char *i, *j;
+
+	while (strlen(haystack))
 	{
-		char *l = haystack;
-		char *p = needle;
-
-
-		while (*l == *p && *p != '\0')
+		i = haystack;
+		j = needle;
+		while (*j == *haystack && *haystack != 0
+		       && *i != 0)
 		{
-			l++;
-			p++;
+			haystack++;
+			j++;
 		}
-
-
-		if (*p == '\0')
-			return (haystack);
+		if (*j == 0)
+			return (i);
+		haystack = i + 1;
 	}
-
-
 	return (0);
 }
